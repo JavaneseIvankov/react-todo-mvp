@@ -4,30 +4,68 @@
 
 @layer base {
    :root {
-      --background: 0, 0%, 98%;
-      --foreground: 235, 24%, 19%;
-      --primary: 0, 0%, 98%;
-      --primary-foreground: 220, 98%, 61%;
+      --background: 0 0% 98%;
+      --foreground: 235 24% 19%;
+      --primary: 0 0% 98%;
+      --primary-foreground: 220 98% 61%;
       --primary-gradient: linear-gradient(hsl(12, 100%, 67%), hsl(280, 87%, 65%));
-      --secondary: 0, 0%, 98%;
-      --secondary-foreground: 233, 14%, 35%;
-      --muted: 0, 0%, 98%;
-      --muted-foreground: 233, 14%, 35%;
-      --border: 233, 14%, 35%;
-      --accent: 0, 0%, 98%;
+      --secondary: 0 0% 98%;
+      --secondary-foreground: 233 14% 35%;
+      --muted: 0 0% 98%;
+      --muted-foreground: 233 14% 35% / 20%;
+      --border: 233 14% 35%;
+      --accent: 0 0% 98%;
       --accent-foreground: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
       --radius: 0.5rem;
    }
 
    .dark {
-      --background: 235, 21%, 11%;
-      --foreground: 236, 33%, 92%;
-      --primary: 235, 24%, 19%;
-      --primary-foreground: 220, 98%, 61%;
+      --background: 235 21% 11%;
+      --foreground: 236 33% 92%;
+      --primary: 235 24% 19%;
+      --primary-foreground: 220 98% 61%;
       --primary-gradient: linear-gradient(192, 100%, 67%, 280, 87%, 65%);
-      --secondary: 235, 21%, 11%;
-      --secondary-foreground: 233, 14%, 35%;
-      --muted: 235, 21%, 11%;
-      --accent: 235, 21%, 11%;
+      --secondary: 235 21% 11%;
+      --secondary-foreground: 233 14% 35%;
+      --muted: 235 21% 11%;
+      --muted-foreground: 233 14% 35%;
+      --accent: 235 21% 11%;
    }
+}
+
+.gradient-border {
+   position: relative;
+   display: inline-block;
+}
+
+.gradient-border-static {
+   position: relative;
+   display: inline-block;
+}
+
+.gradient-border:hover::before {
+   content: '';
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   right: 0px;
+   bottom: 0px;
+   background: linear-gradient(hsl(12, 100%, 67%), hsl(280, 87%, 65%));
+   z-index: 1;
+   border-radius: inherit;
+   pointer-events: none;
+}
+
+.gradient-border-static::before {
+   content: '';
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   right: 0px;
+   bottom: 0px;
+   background: linear-gradient(hsl(12, 100%, 67%), hsl(280, 87%, 65%));
+   z-index: 1;
+   border-radius: inherit;
+   pointer-events: none;
+
 }

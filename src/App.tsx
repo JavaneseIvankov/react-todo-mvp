@@ -1,8 +1,45 @@
-import './App.css';
 import './output.css';
+import { useReducer } from 'react';
+import InputBar from './components/InputBar';
+import TodoList from './components/TodoList';
+import TodoReducer from './reducers/todoReducer';
+import { TodosContext, TodosDispatchContext } from './contexts/TodoContext';
+import type { Todo } from './types';
+import Header from './components/Header';
+
+const initialTodos: Todo[] = [
+   {
+      id: 1,
+      text: 'Learn React',
+      completed: false,
+   },
+   {
+      id: 2,
+      text: 'Learn Vue',
+      completed: false,
+   },
+   {
+      id: 3,
+      text: 'Learn Angular',
+      completed: false,
+   },
+];
 
 function App() {
-   return <></>;
+   const [todos, dispatch] = useReducer(TodoReducer, initialTodos);
+
+   return (
+      <TodosContext.Provider value={todos}>
+         <TodosDispatchContext.Provider value={dispatch}>
+            <Header></Header>
+            <div className="w-[90%] mt-0 mr-auto ml-auto min-w-[320px] max-w-screen-sm">
+               <InputBar></InputBar>
+               <div className="h-10 w-full"></div>
+               <TodoList></TodoList>
+            </div>
+         </TodosDispatchContext.Provider>
+      </TodosContext.Provider>
+   );
 }
 
 export default App;

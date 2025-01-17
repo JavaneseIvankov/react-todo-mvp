@@ -828,8 +828,17 @@ video {
   border-radius: calc(var(--radius) - 4px);
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
 .border-none {
   border-style: none;
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
 }
 
 .bg-black {

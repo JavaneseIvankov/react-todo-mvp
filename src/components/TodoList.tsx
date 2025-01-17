@@ -66,34 +66,36 @@ export default function TodoList() {
    }
 
    return (
-      <div className="flex flex-col rounded-sm w-full h-fit overflow-clip shadow-xl">
-         {filteredTodos.map((todo) => (
-            <>
-               <TodoItem key={todo.id} todo={todo}></TodoItem>
-               <Separator
-                  key={`separator-${todo.id}`}
-                  orientation="horizontal"
-                  className="h-[1px] bg-muted-foreground z-20"
-               ></Separator>
-            </>
-         ))}
-         <div className="flex justify-between bg-primary  h-[72px] ">
-            <Button className="bg-transparent font-normal text-nowrap pl-6 text-xs disabled hover:cursor-default">
-               {todoList.length} items left
-            </Button>
-            <FilterSection
-               filter={filter}
-               setFilter={setFilter}
-               className="hidden md:flex"
-            ></FilterSection>
-            <Button
-               className="bg-transparent font-normal text-nowrap pr-6 text-xs"
-               onClick={handleClearCompleted}
-            >
-               Clear Completed
-            </Button>
+      <div className="flex flex-col gap-10">
+         <div className="flex flex-col rounded-sm w-full h-fit overflow-clip shadow-xl">
+            {filteredTodos.map((todo) => (
+               <>
+                  <TodoItem key={todo.id} todo={todo}></TodoItem>
+                  <Separator
+                     key={`separator-${todo.id}`}
+                     orientation="horizontal"
+                     className="h-[1px] bg-muted-foreground z-20"
+                  ></Separator>
+               </>
+            ))}
+            <div className="flex justify-between bg-primary  h-[72px] ">
+               <Button className="bg-transparent font-normal text-nowrap pl-6 text-xs disabled hover:cursor-default">
+                  {todoList.length} items left
+               </Button>
+               <FilterSection
+                  filter={filter}
+                  setFilter={setFilter}
+                  className="hidden md:flex"
+               ></FilterSection>
+               <Button
+                  className="bg-transparent font-normal text-nowrap pr-6 text-xs"
+                  onClick={handleClearCompleted}
+               >
+                  Clear Completed
+               </Button>
+            </div>
          </div>
-         <div className="flex content-center w-full h-[72px] bg-primary md:hidden rounded-sm mt-10">
+         <div className="flex content-center w-full h-[72px] bg-primary md:hidden rounded-sm overflow-clip shadow-xl">
             <FilterSection
                filter={filter}
                setFilter={setFilter}

@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from 'react';
+import { Fragment, useContext, useMemo, useState } from 'react';
 import { TodosContext, TodosDispatchContext } from '../contexts/TodoContext';
 import type { Todo, Filters } from '../types';
 import getFilteredTodos from '../utils/todoHelpers';
@@ -69,14 +69,13 @@ export default function TodoList() {
       <div className="flex flex-col gap-10">
          <div className="flex flex-col rounded-sm w-full h-fit overflow-clip shadow-xl">
             {filteredTodos.map((todo) => (
-               <>
-                  <TodoItem key={todo.id} todo={todo}></TodoItem>
+               <Fragment key={todo.id}>
+                  <TodoItem todo={todo}></TodoItem>
                   <Separator
-                     key={`separator-${todo.id}`}
                      orientation="horizontal"
                      className="h-[1px] bg-muted-foreground z-20"
                   ></Separator>
-               </>
+               </Fragment>
             ))}
             <div className="flex justify-between bg-primary  h-[72px] ">
                <Button className="bg-transparent font-normal text-nowrap pl-6 text-xs disabled hover:cursor-default">

@@ -1,16 +1,11 @@
-import { useContext, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { TodosContext, TodosDispatchContext } from '../contexts/TodoContext';
-import type { Todo } from '../types';
+import type { Todo, Filters } from '../types';
+import getFilteredTodos from '../utils/todoHelpers';
 import TodoItem from './TodoItem';
 import Separator from './primitives/Separator';
 import Button from './primitives/Button';
 import { cn } from '../lib/utils';
-
-type Filters = 'all' | 'active' | 'completed';
-
-function getFilteredTodos(todos: Todo[], filter: Filters) {
-   return todos; // XXX: dummy
-}
 
 function FilterSection({
    filter,
@@ -61,7 +56,10 @@ export default function TodoList() {
    const todoList: Todo[] = useContext(TodosContext);
    const [filter, setFilter] = useState<Filters>('all');
 
-   const filteredTodos = getFilteredTodos(todoList, filter);
+   const filteredTodos = useMemo(
+      () => getFilteredTodos(todoList, filter),
+      [todoList, filter]
+   );
 
    function handleClearCompleted() {
       dispatch?.({ type: 'CLEAR_COMPLETED' });
@@ -95,8 +93,6 @@ export default function TodoList() {
                Clear Completed
             </Button>
          </div>
-         {/* //XXX: Delete */}
-         {/* <div className="h-10 w-full appearance-none shadow-none opacity-0"></div> */}
          <div className="flex content-center w-full h-[72px] bg-primary md:hidden rounded-sm mt-10">
             <FilterSection
                filter={filter}

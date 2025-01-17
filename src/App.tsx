@@ -31,11 +31,12 @@ function App() {
    return (
       <TodosContext.Provider value={todos}>
          <TodosDispatchContext.Provider value={dispatch}>
-            <Header></Header>
-            <div className="w-[90%] mt-0 mr-auto ml-auto min-w-[320px] max-w-screen-sm">
-               <InputBar></InputBar>
-               <div className="h-10 w-full"></div>
-               <TodoList></TodoList>
+            <div className="font-josefin flex flex-col gap-10">
+               <Header />
+               <div className="w-[80%] mt-0 mr-auto ml-auto min-w-[320px] max-w-screen-sm flex flex-col gap-10">
+                  <InputBar></InputBar>
+                  <TodoList></TodoList>
+               </div>
             </div>
          </TodosDispatchContext.Provider>
       </TodosContext.Provider>

@@ -39,7 +39,15 @@ const TodoItem = forwardRef<HTMLInputElement, TodoItemProps>(
                   checked={todo.completed}
                   setChecked={() => (todo.completed = !todo.completed)}
                ></CheckBox>
-               <h1 className="text-foreground block text-wrap">{todo.text}</h1>
+               {todo.completed ? (
+                  <h1 className="text-muted-foreground block text-wrap">
+                     <s>{todo.text}</s>
+                  </h1>
+               ) : (
+                  <h1 className="text-foreground block text-wrap">
+                     {todo.text}
+                  </h1>
+               )}
             </div>
             <button
                onClick={handleTodoDelete}

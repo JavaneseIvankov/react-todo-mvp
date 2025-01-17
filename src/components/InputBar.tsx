@@ -65,7 +65,7 @@ export default function InputBar() {
          <Input
             className="rounded-sm"
             type="text"
-            placeholder="this is input"
+            placeholder="Create a new todo..."
             ref={inputRef}
          ></Input>
       </div>

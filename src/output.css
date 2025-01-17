@@ -936,6 +936,10 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
 .placeholder-muted-foreground::-moz-placeholder {
   color: hsl(var(--muted-foreground));
 }

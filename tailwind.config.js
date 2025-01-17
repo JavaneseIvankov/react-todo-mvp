@@ -34,6 +34,9 @@ export default {
          fontSize: {
             base: '18px',
          },
+         fontFamily: {
+            josefin: ['Josefin Sans', 'sans-serif'],
+         },
       },
    },
    plugins: [],

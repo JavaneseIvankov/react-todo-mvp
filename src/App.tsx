@@ -34,8 +34,8 @@ function App() {
             <div className="font-josefin flex flex-col gap-10">
                <Header />
                <div className="w-[80%] mt-0 mr-auto ml-auto min-w-[260px] max-w-screen-sm flex flex-col gap-10">
-                  <InputBar></InputBar>
-                  <TodoList></TodoList>
+                  <InputBar />
+                  <TodoList />
                </div>
             </div>
          </TodosDispatchContext.Provider>

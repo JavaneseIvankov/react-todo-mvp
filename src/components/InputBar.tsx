@@ -48,7 +48,7 @@ export default function InputBar() {
             inputElement.removeEventListener('keydown', handleKeys);
          }
       };
-   }, []);
+   });
 
    return (
       <div className="flex h-fit content-center items-center bg-primary rounded-sm">
@@ -57,13 +57,13 @@ export default function InputBar() {
             onChange={(e) => setChecked(e.target.checked)}
             checked={checked}
             setChecked={setChecked}
-         ></CheckBox>
+         />
          <Input
             className="rounded-sm"
             type="text"
             placeholder="Create a new todo..."
             ref={inputRef}
-         ></Input>
+         />
       </div>
    );
 }

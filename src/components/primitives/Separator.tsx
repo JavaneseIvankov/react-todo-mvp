@@ -1,3 +1,4 @@
+import type React from 'react';
 import { cn } from '../../lib/utils';
 
 interface SeparatorProps extends React.HTMLAttributes<HTMLHRElement> {
@@ -19,5 +20,5 @@ export default function Separator({
          orStyle = 'h-full w-[2px]';
          break;
    }
-   return <div className={cn(orStyle, className)} {...props}></div>;
+   return <div className={cn(orStyle, className)} {...props}/>;
 }

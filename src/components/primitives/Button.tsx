@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { cn } from '../../lib/utils';
 import clsx from 'clsx';
 
@@ -25,7 +25,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             )}
             ref={ref}
             {...props}
-         ></button>
+         />
       );
    }
 );

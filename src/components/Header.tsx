@@ -47,10 +47,10 @@ export default function Header() {
                TODO
             </h1>
             <button className="bg-transparent" onClick={toggleTheme}>
-               {isDark ? <IconMoon></IconMoon> : <IconSun></IconSun>}
+               {isDark ? <IconMoon /> : <IconSun />}
             </button>
          </div>
-         <div className="z-[-999] fixed bg-background w-full h-full"></div>
+         <div className="z-[-999] fixed bg-background w-full h-full" />
       </>
    );
 }

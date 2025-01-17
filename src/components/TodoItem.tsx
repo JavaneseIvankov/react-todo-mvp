@@ -1,7 +1,6 @@
 import React, {
    forwardRef,
    useContext,
-   type HTMLInputTypeAttribute,
 } from 'react';
 import type { Todo } from '../types';
 import CheckBox from './primitives/CheckBox';
@@ -12,7 +11,6 @@ interface TodoItemProps {
    todo: Todo;
 }
 
-// export default function TodoItem({ todo }: TodoItemProps) {
 const TodoItem = forwardRef<HTMLInputElement, TodoItemProps>(
    ({ todo }, ref) => {
       const dispatch = useContext(TodosDispatchContext);
@@ -38,7 +36,7 @@ const TodoItem = forwardRef<HTMLInputElement, TodoItemProps>(
                   onChange={handleTodoToggle}
                   checked={todo.completed}
                   setChecked={() => (todo.completed = !todo.completed)}
-               ></CheckBox>
+               />
                {todo.completed ? (
                   <h1 className="text-muted-foreground block text-wrap">
                      <s>{todo.text}</s>
@@ -53,11 +51,13 @@ const TodoItem = forwardRef<HTMLInputElement, TodoItemProps>(
                onClick={handleTodoDelete}
                className="hidden group-hover:block p-6"
             >
-               <IconCross></IconCross>
+               <IconCross/>
             </button>
          </div>
       );
    }
 );
+
+TodoItem.displayName = 'TodoItem';
 
 export default TodoItem;

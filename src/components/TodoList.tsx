@@ -70,11 +70,11 @@ export default function TodoList() {
          <div className="flex flex-col rounded-sm w-full h-fit overflow-clip shadow-xl">
             {filteredTodos.map((todo) => (
                <Fragment key={todo.id}>
-                  <TodoItem todo={todo}></TodoItem>
+                  <TodoItem todo={todo}/>
                   <Separator
                      orientation="horizontal"
                      className="h-[1px] bg-muted-foreground z-20"
-                  ></Separator>
+                  />
                </Fragment>
             ))}
             <div className="flex justify-between bg-primary  h-[72px] ">
@@ -85,7 +85,7 @@ export default function TodoList() {
                   filter={filter}
                   setFilter={setFilter}
                   className="hidden md:flex"
-               ></FilterSection>
+               />
                <Button
                   className="bg-transparent font-normal text-nowrap pr-6 text-xs"
                   onClick={handleClearCompleted}
@@ -98,7 +98,7 @@ export default function TodoList() {
             <FilterSection
                filter={filter}
                setFilter={setFilter}
-            ></FilterSection>
+            />
          </div>
       </div>
    );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import IconCheck from '../../assets/icons/icon-check';
 import { cn } from '../../lib/utils';
 
@@ -12,17 +12,14 @@ const CheckBox = React.forwardRef<HTMLInputElement, InputProps>(
    (
       {
          className,
-         checked: checkedState,
-         setChecked: setCheckedState,
+         checked,
+         setChecked,
          ...props
       },
       ref
    ) => {
-      const checked = checkedState;
-      const setChecked = setCheckedState;
-      const localRef =
-         (ref as React.RefObject<HTMLInputElement>) ||
-         useRef<HTMLInputElement>(null);
+      const defaultRef = useRef<HTMLInputElement>(null);
+      const localRef = (ref as React.RefObject<HTMLInputElement>) || defaultRef;
 
       return (
          <div className="p-6 flex">
@@ -41,7 +38,7 @@ const CheckBox = React.forwardRef<HTMLInputElement, InputProps>(
                      !checked ? 'bg-primary' : ''
                   }`}
                >
-                  {checked && <IconCheck className=""></IconCheck>}
+                  {checked && <IconCheck/>}
                </div>
                <input
                   checked={checked}

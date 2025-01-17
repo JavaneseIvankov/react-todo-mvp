@@ -1,14 +1,15 @@
-import type { Action } from '@dnd-kit/core/dist/store';
 import type { Todo } from '../types';
 import type { TodoAction } from './todoReducer.type';
 
 export default function TodoReducer(todos: Todo[], action: TodoAction) {
    switch (action.type) {
       case 'ADD_TODO': {
+         const lastElementId =
+            todos.length > 0 ? (todos[todos.length - 1] as Todo).id : 1;
          return [
             ...todos,
             {
-               id: todos.length + 1,
+               id: lastElementId + 1,
                text: action.payload.text,
                completed: action.payload.completed,
             },

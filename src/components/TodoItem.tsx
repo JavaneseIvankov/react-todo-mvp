@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import type { Todo } from '../types';
 import CheckBox from './primitives/CheckBox';
-import IconCross from '../assets/images/icon-cross';
+import IconCross from '../assets/icons/icon-cross';
 import { TodosDispatchContext } from '../contexts/TodoContext';
 
 interface TodoItemProps {

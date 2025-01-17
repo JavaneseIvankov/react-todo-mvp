@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import IconMoon from '../assets/images/icon-moon';
-import IconSun from '../assets/images/icon-sun';
+import IconMoon from '../assets/icons/icon-moon';
+import IconSun from '../assets/icons/icon-sun';
 
 export default function Header() {
    const [isDark, setIsDark] = useState(false);
@@ -22,20 +22,25 @@ export default function Header() {
       mq.addEventListener('change', (evt) => setIsDark(evt.matches));
    }, []);
 
-   const bannerSrc = isDark
-      ? 'src/assets/images/bg-desktop-dark.jpg'
-      : 'src/assets/images/bg-desktop-light.jpg';
-
    return (
       <>
          <img
             src={
                isDark
-                  ? 'src/assets/images/bg-desktop-dark.jpg'
-                  : 'src/assets/images/bg-desktop-light.jpg'
+                  ? '/assets/images/bg-desktop-dark.jpg'
+                  : '/assets/images/bg-desktop-light.jpg'
             }
             alt="banner"
-            className="w-full min-h-[340px] aspect-auto absolute top-0 left-0 z-[-1]"
+            className="w-full min-h-[340px] aspect-auto absolute top-0 left-0 z-[-8] hidden sm:block"
+         />
+         <img
+            src={
+               isDark
+                  ? '/assets/images/bg-mobile-dark.jpg'
+                  : '/assets/images/bg-mobile-light.jpg'
+            }
+            alt="banner"
+            className="w-full min-h-[340px] aspect-auto absolute top-0 left-0 z-[-10] sm:hidden"
          />
          <div className="flex justify-between w-[80%] max-w-screen-sm ml-auto mr-auto mt-[5rem] mb-[0.5rem]">
             <h1 className="text-[2.5rem] text-white tracking-[0.5rem] font-bold">

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import IconCheck from '../../assets/images/icon-check';
+import IconCheck from '../../assets/icons/icon-check';
 import { cn } from '../../lib/utils';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {

@@ -13,7 +13,6 @@ export default function InputBar() {
       if (checkBoxRef.current) {
          checkBoxRef.current.click();
          setChecked(value);
-         console.log('kukikang');
       }
    };
 
@@ -27,17 +26,15 @@ export default function InputBar() {
       });
 
       inputRef.current!.value = '';
-      // setCheckbox(false);
       setChecked(false);
    };
 
    const handleKeys = (e: KeyboardEvent) => {
       if (e.key === 'Enter' && e.ctrlKey) {
-         console.log('Ctrl+Enter key pressed');
+         setCheckbox(true);
+         handleTodoAdd();
       } else if (e.key === 'Enter') {
          handleTodoAdd();
-      } else if (e.key === 'Escape') {
-         console.log('Escape key pressed');
       }
    };
 
@@ -57,7 +54,6 @@ export default function InputBar() {
       <div className="flex h-fit content-center items-center bg-primary rounded-sm">
          <CheckBox
             ref={checkBoxRef}
-            // onClick={() => setChecked(!checked)}
             onChange={(e) => setChecked(e.target.checked)}
             checked={checked}
             setChecked={setChecked}

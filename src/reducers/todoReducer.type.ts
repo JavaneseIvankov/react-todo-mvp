@@ -1,3 +1,5 @@
+import type { Todo } from "../types";
+
 export interface AddTodoAction {
    type: 'ADD_TODO';
    payload: { text: string; completed: boolean };
@@ -15,6 +17,11 @@ export interface ToggleTodoAction {
 
 export interface ClearCompletedAction {
    type: 'CLEAR_COMPLETED';
+}
+
+export interface TodosState {
+   todos: Todo[],
+   count: number,
 }
 
 export type TodoAction =

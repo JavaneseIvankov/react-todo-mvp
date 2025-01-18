@@ -25,8 +25,13 @@ const initialTodos: Todo[] = [
    },
 ];
 
+const initialState = {
+   todos: initialTodos,
+   count: initialTodos.length,
+}
+
 function App() {
-   const [todos, dispatch] = useReducer(TodoReducer, initialTodos);
+   const [{todos}, dispatch] = useReducer(TodoReducer, initialState);
 
    return (
       <TodosContext.Provider value={todos}>

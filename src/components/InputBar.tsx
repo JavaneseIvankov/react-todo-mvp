@@ -1,9 +1,9 @@
 import Input from './primitives/Input';
 import CheckBox from './primitives/CheckBox';
 import { TodosDispatchContext } from '../contexts/TodoContext';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { memo, useContext, useEffect, useRef, useState } from 'react';
 
-export default function InputBar() {
+const InputBar = () => {
    const dispatch = useContext(TodosDispatchContext);
    const [checked, setChecked] = useState(false);
    const checkBoxRef = useRef<HTMLInputElement>(null);
@@ -67,3 +67,5 @@ export default function InputBar() {
       </div>
    );
 }
+
+export default memo(InputBar);

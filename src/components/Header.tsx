@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import IconMoon from '../assets/icons/icon-moon';
 import IconSun from '../assets/icons/icon-sun';
 
-export default function Header() {
+const Header = () => {
    const [isDark, setIsDark] = useState(false);
 
    const toggleTheme = () => {
@@ -54,3 +54,5 @@ export default function Header() {
       </>
    );
 }
+
+export default memo(Header);

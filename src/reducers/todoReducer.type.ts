@@ -1,4 +1,4 @@
-import type { Todo } from "../types";
+import type { Todo } from '../types';
 
 export interface AddTodoAction {
    type: 'ADD_TODO';
@@ -19,13 +19,19 @@ export interface ClearCompletedAction {
    type: 'CLEAR_COMPLETED';
 }
 
+export interface ChangeTodos {
+   type: 'CHANGE_TODOS';
+   payload: {todos: Todo[]};
+}
+
 export interface TodosState {
-   todos: Todo[],
-   count: number,
+   todos: Todo[];
+   count: number;
 }
 
 export type TodoAction =
    | AddTodoAction
    | RemoveTodoAction
    | ToggleTodoAction
-   | ClearCompletedAction;
+   | ClearCompletedAction
+   | ChangeTodos;

@@ -1,11 +1,11 @@
-import { Fragment, useContext, useMemo, useState } from 'react';
+import { useContext, useMemo, useState, type Dispatch } from 'react';
 import { TodosContext, TodosDispatchContext } from '../contexts/TodoContext';
 import type { Todo, Filters } from '../types';
 import getFilteredTodos from '../utils/todoHelpers';
-import TodoItem from './TodoItem';
-import Separator from './primitives/Separator';
 import Button from './primitives/Button';
 import { cn } from '../lib/utils';
+import SortableTodos from './SortableTodos';
+import type { TodoAction } from '../reducers/todoReducer.type';
 
 function FilterSection({
    filter,
@@ -65,21 +65,19 @@ export default function TodoList() {
       dispatch?.({ type: 'CLEAR_COMPLETED' });
    }
 
+   function getLeftCount(todos: Todo[]) { 
+      let count = 0
+      todos.forEach(todo => (todo.completed) ? count : count++)
+      return count
+   }
+
    return (
       <div className="flex flex-col gap-10">
          <div className="flex flex-col rounded-sm w-full h-fit overflow-clip shadow-xl">
-            {filteredTodos.map((todo) => (
-               <Fragment key={todo.id}>
-                  <TodoItem todo={todo}/>
-                  <Separator
-                     orientation="horizontal"
-                     className="h-[1px] bg-muted-foreground z-20"
-                  />
-               </Fragment>
-            ))}
+               <SortableTodos todos={filteredTodos} dispatch={dispatch as Dispatch<TodoAction>}/>
             <div className="flex justify-between bg-primary  h-[72px] ">
                <Button className="bg-transparent font-normal text-nowrap pl-6 text-xs disabled hover:cursor-default">
-                  {todoList.length} items left
+                  {getLeftCount(todoList)} items left
                </Button>
                <FilterSection
                   filter={filter}

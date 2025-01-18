@@ -42,6 +42,12 @@ export default function TodoReducer(state: TodosState, action: TodoAction) {
             }),
          };
       }
+      case 'CHANGE_TODOS': {
+         return {
+            ...state,
+            todos: action.payload.todos,
+         }
+      }
       default: {
          throw new Error(`Unhandled action type: ${action.type}`);
       }

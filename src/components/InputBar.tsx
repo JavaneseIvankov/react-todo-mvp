@@ -51,7 +51,7 @@ const InputBar = () => {
    });
 
    return (
-      <div className="flex h-fit content-center items-center bg-primary rounded-sm">
+      <div className="flex h-fit content-center items-center bg-primary rounded-sm shadow-xl">
          <CheckBox
             ref={checkBoxRef}
             onChange={(e) => setChecked(e.target.checked)}

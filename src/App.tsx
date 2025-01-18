@@ -32,8 +32,10 @@ const initialState = {
 
 function App() {
    const [{todos}, dispatch] = useReducer(TodoReducer, initialState);
+   console.log(todos)
 
    return (
+      <div className='font-josefin'>
       <TodosContext.Provider value={todos}>
          <TodosDispatchContext.Provider value={dispatch}>
             <div className="font-josefin flex flex-col gap-10">
@@ -45,6 +47,9 @@ function App() {
             </div>
          </TodosDispatchContext.Provider>
       </TodosContext.Provider>
+
+      <h2 className='mt-16 mb-16 text-center text-foreground/50'>Drag and drop to reorder the list</h2>
+      </div>
    );
 }
 

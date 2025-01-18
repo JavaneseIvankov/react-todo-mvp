@@ -46,9 +46,7 @@ export default function SortableTodos({ todos, dispatch }: SortableTodosProps) {
       const oldIndex = active.sortable.index; 
       const newIndex = over.sortable.index; 
 
-      // console.log(oldIndex, newIndex)
       const newTodos = arrayMove(todos, oldIndex, newIndex);
-      // console.log(newTodos)
       dispatch({ type: 'CHANGE_TODOS', payload: { todos: newTodos } });
    }
 
@@ -56,7 +54,6 @@ export default function SortableTodos({ todos, dispatch }: SortableTodosProps) {
       const { active, over } = event;
 
       if (active.id !== over?.id) {
-         console.log(active.data.current)
          reorderTodos(todos, active.data.current as SortableData, over?.data.current as SortableData);
       }
    }

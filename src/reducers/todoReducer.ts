@@ -46,6 +46,7 @@ export default function TodoReducer(state: TodosState, action: TodoAction) {
          return {
             ...state,
             todos: action.payload.todos,
+            count: action.payload.count ?? state.count
          }
       }
       default: {

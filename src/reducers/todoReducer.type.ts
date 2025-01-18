@@ -21,7 +21,7 @@ export interface ClearCompletedAction {
 
 export interface ChangeTodos {
    type: 'CHANGE_TODOS';
-   payload: {todos: Todo[]};
+   payload: {todos: Todo[], count?: number};
 }
 
 export interface TodosState {

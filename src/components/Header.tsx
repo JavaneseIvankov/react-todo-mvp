@@ -27,8 +27,8 @@ const Header = () => {
          <img
             src={
                isDark
-                  ? '/assets/images/bg-desktop-dark.jpg'
-                  : '/assets/images/bg-desktop-light.jpg'
+                  ? '/bg-desktop-dark.jpg'
+                  : '/bg-desktop-light.jpg'
             }
             alt="banner"
             className="w-full min-h-[340px] aspect-auto absolute top-0 left-0 z-[-8] hidden sm:block"
@@ -36,8 +36,8 @@ const Header = () => {
          <img
             src={
                isDark
-                  ? '/assets/images/bg-mobile-dark.jpg'
-                  : '/assets/images/bg-mobile-light.jpg'
+                  ? '/bg-mobile-dark.jpg'
+                  : '/bg-mobile-light.jpg'
             }
             alt="banner"
             className="w-full min-h-[340px] aspect-auto absolute top-0 left-0 z-[-10] sm:hidden"

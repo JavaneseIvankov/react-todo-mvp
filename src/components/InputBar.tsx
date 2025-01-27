@@ -1,13 +1,13 @@
 import Input from './primitives/Input';
 import CheckBox from './primitives/CheckBox';
-import { TodosDispatchContext } from '../contexts/TodoContext';
-import { memo, useContext, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
+import useTodoStore from '../stores/todoStore';
 
 const InputBar = () => {
-   const dispatch = useContext(TodosDispatchContext);
    const [checked, setChecked] = useState(false);
    const checkBoxRef = useRef<HTMLInputElement>(null);
    const inputRef = useRef<HTMLInputElement>(null);
+   const addTodo = useTodoStore((s) => s.addTodo);
 
    const setCheckbox = (value: boolean) => {
       if (checkBoxRef.current) {
@@ -17,13 +17,9 @@ const InputBar = () => {
    };
 
    const handleTodoAdd = () => {
-      dispatch?.({
-         type: 'ADD_TODO',
-         payload: {
-            text: inputRef.current?.value || '',
-            completed: checkBoxRef.current?.checked || false,
-         },
-      });
+      const text = inputRef.current?.value ?? '';
+      const completed = checkBoxRef.current?.checked ?? false;
+      addTodo(text, completed);
 
       inputRef.current!.value = '';
       setChecked(false);
@@ -66,6 +62,6 @@ const InputBar = () => {
          />
       </div>
    );
-}
+};
 
 export default memo(InputBar);

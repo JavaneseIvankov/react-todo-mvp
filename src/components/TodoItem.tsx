@@ -1,12 +1,12 @@
-import React, { forwardRef, useContext } from 'react';
+import React, { forwardRef } from 'react';
 import type { Todo } from '../types';
 import CheckBox from './primitives/CheckBox';
 import IconCross from '../assets/icons/icon-cross';
-import { TodosDispatchContext } from '../contexts/TodoContext';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { cn } from '../lib/utils';
 import clsx from 'clsx';
+import useTodoStore from '../stores/todoStore';
 
 interface TodoItemProps {
    todo: Todo;
@@ -29,19 +29,14 @@ const TodoItem = forwardRef<HTMLInputElement, TodoItemProps>(
          transition,
       };
 
-      const dispatch = useContext(TodosDispatchContext);
+      const toggleTodo = useTodoStore((s) => s.toggleTodo);
+      const deleteTodo = useTodoStore((s) => s.deleteTodo);
       const handleTodoToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
-         dispatch?.({
-            type: 'TOGGLE_TODO',
-            payload: { id: todo.id, completed: e.target.checked },
-         });
+         toggleTodo(todo.id, e.target.checked);
       };
 
       const handleTodoDelete = () => {
-         dispatch?.({
-            type: 'DELETE_TODO',
-            payload: { id: todo.id },
-         });
+         deleteTodo(todo.id);
       };
 
       return (

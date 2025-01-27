@@ -1,11 +1,10 @@
-import { useContext, useMemo, useState, type Dispatch } from 'react';
-import { TodosContext, TodosDispatchContext } from '../contexts/TodoContext';
+import { useMemo, useState } from 'react';
 import type { Todo, Filters } from '../types';
 import getFilteredTodos from '../utils/todoHelpers';
 import Button from './primitives/Button';
 import { cn } from '../lib/utils';
 import SortableTodos from './SortableTodos';
-import type { TodoAction } from '../reducers/todoReducer.type';
+import useTodoStore from '../stores/todoStore';
 
 function FilterSection({
    filter,
@@ -52,8 +51,9 @@ function FilterSection({
 }
 
 export default function TodoList() {
-   const dispatch = useContext(TodosDispatchContext);
-   const todoList: Todo[] = useContext(TodosContext);
+   const clearCompleted = useTodoStore((s) => s.clearCompleted);
+   const changeTodos = useTodoStore((s) => s.changeTodos);
+   const todoList: Todo[] = useTodoStore((s) => s.todos);
    const [filter, setFilter] = useState<Filters>('all');
 
    const filteredTodos = useMemo(
@@ -62,19 +62,19 @@ export default function TodoList() {
    );
 
    function handleClearCompleted() {
-      dispatch?.({ type: 'CLEAR_COMPLETED' });
+      clearCompleted();
    }
 
-   function getLeftCount(todos: Todo[]) { 
-      let count = 0
-      todos.forEach(todo => (todo.completed) ? count : count++)
-      return count
+   function getLeftCount(todos: Todo[]) {
+      let count = 0;
+      todos.forEach((todo) => (todo.completed ? count : count++));
+      return count;
    }
 
    return (
       <div className="flex flex-col gap-10">
          <div className="flex flex-col rounded-sm w-full h-fit overflow-clip shadow-xl">
-               <SortableTodos todos={filteredTodos} dispatch={dispatch as Dispatch<TodoAction>}/>
+            <SortableTodos todos={filteredTodos} changeTodos={changeTodos} />
             <div className="flex justify-between bg-primary  h-[72px] ">
                <Button className="bg-transparent font-normal text-nowrap pl-6 text-xs disabled hover:cursor-default">
                   {getLeftCount(todoList)} items left
@@ -93,10 +93,7 @@ export default function TodoList() {
             </div>
          </div>
          <div className="flex content-center w-full h-[72px] bg-primary md:hidden rounded-sm overflow-clip shadow-xl">
-            <FilterSection
-               filter={filter}
-               setFilter={setFilter}
-            />
+            <FilterSection filter={filter} setFilter={setFilter} />
          </div>
       </div>
    );
